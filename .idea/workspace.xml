@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3725df09-835c-4560-9650-9e39c04fafff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Mojito-Website.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-project/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/constants/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/components/Hero.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +52,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vite-project" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/vite-project/src" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -60,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1761738765651</updated>
-      <workItem from="1761738766693" duration="1825000" />
+      <workItem from="1761738766693" duration="9482000" />
     </task>
     <servers />
   </component>
