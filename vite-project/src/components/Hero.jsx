@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useRef} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
-import {SplitText} from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
+import {useMediaQuery} from 'react-responsive'
+
+// Register GSAP plugins once
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = () => {
+
+    const videoRef = useRef();
+
+    const isMobile = useMediaQuery({maxWidth: 767});
 
     useGSAP(() => {
         const heroSplit = new SplitText('.title',{type:'chars , words'});
@@ -27,6 +35,7 @@ const Hero = () => {
             delay:1
         });
 
+        // Parallax leaves on scroll
         gsap.timeline({
             scrollTrigger:{
                 trigger:'#hero',
@@ -38,7 +47,51 @@ const Hero = () => {
             .to('.right-leaf',{y:200},0)
             .to('.left-leaf',{y:-200},0)
 
-    }, [])
+        // Scroll through the entire page: map page scroll (top->bottom) to video 0->duration
+        const pageStart = 'top top';
+        const pageEnd = 'max'
+
+        const videoEl = videoRef.current;
+        if (!videoEl) return;
+
+        // Ensure video is ready; then create a ScrollTrigger that scrubs through the video
+        const initScrollScrub = () => {
+            const duration = videoEl.duration || 0;
+            // Avoid NaN and zero-duration
+            if (!duration || !isFinite(duration)) return;
+
+            // Pause native play and set to start
+            try { videoEl.pause(); } catch (e) {}
+            try { videoEl.currentTime = 0; } catch (e) {}
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: document.documentElement,
+                    start: pageStart,
+                    end: pageEnd,
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                }
+            });
+
+            tl.fromTo(videoEl, { currentTime: 0 }, { currentTime: duration, ease: 'none' });
+        };
+
+        if (videoEl.readyState >= 1) {
+            initScrollScrub();
+            // Recalculate ScrollTrigger positions once duration is known
+            ScrollTrigger.refresh();
+        } else {
+            const onMeta = () => {
+                initScrollScrub();
+                // Recalculate ScrollTrigger positions once duration is known
+                ScrollTrigger.refresh();
+                videoEl.removeEventListener('loadedmetadata', onMeta);
+            };
+            videoEl.addEventListener('loadedmetadata', onMeta);
+        }
+
+    }, { dependencies: [isMobile] })
     return (
         <>
 
@@ -68,6 +121,12 @@ const Hero = () => {
                 </div>
 
             </section>
+
+            <div className="video absolute inset-0">
+                <video ref={videoRef}
+                       src="/videos/output.mp4"
+                       muted playsInline preload="auto" />
+            </div>
         </>
     )
 }
